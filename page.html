@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Rental Form</title>
+    <script defer src="scriptMain.js"></script>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-radial from-orange-300 to-yellow-700 p-6">
+    <div class="max-w-2xl mx-auto bg-orange-100 p-6 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-bold mb-4 text-orange-950"></h2>
+        Car Rental Reservation
+      </h2>
+
+      <form id="rentalForm" class="space-y-4" >
+        <div class="flex space-x-4 justify-between">
+          <!-- Full Name -->
+          <div class="w-full">
+            <label class="block font-semibold text-orange-950">Full Name</label>
+            <input
+              type="text"
+              id="name"
+              class="flex w-full p-2 border bg-white focus-within:outline-2 focus-within:outline-orange-500"
+            />
+            <p id="nameError" class="text-red-500 text-sm hidden">
+              Must be at least 3 characters long and contains 2 words.
+            </p>
+          </div>
+
+          <!-- Email -->
+          <div class="w-full">
+            <label class="block font-semibold text-orange-950">Email</label>
+            <input
+              type="email"
+              id="email"
+              class="flex w-full p-2 border bg-white focus-within:outline-2 focus-within:outline-orange-500"
+            />
+            <p id="emailError" class="text-red-500 text-sm hidden">
+              Must contain "@" and "." in the correct order.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex space-x-4 justify-between">
+          <div class="w-full">
+            <label class="block font-semibold text-orange-950"
+              >Phone Number</label
+            >
+            <input
+              type="tel"
+              id="phone"
+              class="w-full p-2 border bg-white focus-within:outline-2 focus-within:outline-orange-500"
+            />
+            <p id="phoneError" class="text-red-500 text-sm hidden">
+              Phone number must be 8 digits.
+            </p>
+          </div>
+
+          <!-- Car Type -->
+          <div class="w-full">
+            <label class="block font-semibold text-orange-950">Car Type</label>
+            <select
+              id="carType"
+              class="w-full p-2 border bg-white focus-within:outline-2 focus-within:outline-orange-500"
+            >
+              <option value="">Select a car</option>
+              <option value="50">Economy ($50/day)</option>
+              <option value="70">Standard ($70/day)</option>
+              <option value="100">Luxury ($100/day)</option>
+            </select>
+            <p id="carTypeError" class="text-red-500 text-sm hidden">
+              Please select a car type.
+            </p>
+          </div>
+        </div>
+        <!-- Phone Number -->
+
+        <div class="flex space-x-4 justify-between">
+          <!-- Start Date -->
+          <div class="w-full">
+            <label class="block font-semibold text-orange-950"
+              >Start Date</label
+            >
+            <input
+              type="date"
+              id="startDate"
+              class="w-full p-2 border bg-white focus-within:outline-2 focus-within:outline-orange-500"
+            />
+            <p id="startDateError" class="text-red-500 text-sm hidden">
+              Must be greater than today.
+            </p>
+          </div>
+
+          <!-- End Date -->
+          <div class="w-full">
+            <label class="block font-semibold text-orange-950">End Date</label>
+            <input
+              type="date"
+              id="endDate"
+              class="w-full p-2 border bg-white focus-within:outline-2 focus-within:outline-orange-500"
+            />
+            <p id="endDateError" class="text-red-500 text-sm hidden">
+              End date must be after the start date.
+            </p>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="w-full bg-orange-500 text-white p-2 hover:bg-orange-600"
+        >
+          Submit
+        </button>
+        <button
+          type="button"
+          onclick="updateRow()"
+          class="w-full bg-emerald-500 text-white p-2 hover:bg-emerald-600"
+        >
+          Update
+        </button>
+
+        <!-- Total Cost -->
+        <div class="flex justify-center space-x-2">
+          <label class="text-lg font-semibold w-1/2 text-right"
+            >Total Cost</label
+          >
+          <input
+            id="totalCost"
+            class="text-lg font-bold text-orange-600 w-1/2 focus-within:outline-none"
+            value="0 TND"
+            readonly
+          />
+        </div>
+      </form>
+    </div>
+
+    <!-- Reservation Table -->
+    <div class="max-w-5xl mx-auto mt-6 bg-orange-100 p-6 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-bold mb-4 text-orange-950">Reservations</h2>
+      <table class="w-full border-collapse border border-orange-300">
+        <thead>
+          <tr class="bg-orange-500 text-white">
+            <th class="border border-orange-300 p-2">Name</th>
+            <th class="border border-orange-300 p-2">Email</th>
+            <th class="border border-orange-300 p-2">Phone</th>
+            <th class="border border-orange-300 p-2">Car Type</th>
+            <th class="border border-orange-300 p-2">Start Date</th>
+            <th class="border border-orange-300 p-2">End Date</th>
+            <th class="border border-orange-300 p-2">Total Cost</th>
+            <th class="border border-orange-300 p-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="reservationTable"></tbody>
+      </table>
+    </div>
+    <script type="module" src="scriptMain.js" defer></script>
+  </body>
+</html>
